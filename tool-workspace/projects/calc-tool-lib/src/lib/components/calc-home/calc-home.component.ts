@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Add, CalcToolAppState, CalcToolState, Subtract } from '../../calc-tool-lib.state';
+import { Add, CalcToolStateModel, CalcToolState, Subtract } from '../../calc-tool-lib.state';
 
 @Component({
   selector: 'lib-calc-home',
@@ -12,7 +12,7 @@ import { Add, CalcToolAppState, CalcToolState, Subtract } from '../../calc-tool-
 })
 export class CalcHomeComponent implements OnInit {
 
-  // @Select((state: { calcTool: CalcToolAppState }) => state.calcTool.result)
+  // @Select((state: { calcTool: CalcToolStateModel }) => state.calcTool.result)
   @Select(CalcToolState.result)
   result$!: Observable<number>;
 
@@ -20,7 +20,7 @@ export class CalcHomeComponent implements OnInit {
 
   constructor(private store: Store) {
     // this.result$ = this.store.select(
-    //   (state: { calcTool: CalcToolAppState }) => state.calcTool.result);
+    //   (state: { calcTool: CalcToolStateModel }) => state.calcTool.result);
   }
 
   ngOnInit(): void {

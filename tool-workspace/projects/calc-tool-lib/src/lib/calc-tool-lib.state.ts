@@ -10,11 +10,11 @@ export class Subtract {
   constructor(public value: number) { }
 }
 
-export type CalcToolAppState = {
+export type CalcToolStateModel = {
   result: number;
 };
 
-@State<CalcToolAppState>({
+@State<CalcToolStateModel>({
   name: 'calcTool',
   defaults: {
     result: 0,
@@ -23,12 +23,12 @@ export type CalcToolAppState = {
 export class CalcToolState {
 
   @Selector()
-  static result(state: CalcToolAppState) {
+  static result(state: CalcToolStateModel) {
     return state.result;
   }
 
   @Action(Add)
-  add(ctx: StateContext<CalcToolAppState>, action: Add) {
+  add(ctx: StateContext<CalcToolStateModel>, action: Add) {
     
     const state = ctx.getState();
     
@@ -38,7 +38,7 @@ export class CalcToolState {
   }
 
   @Action(Subtract)
-  subtract(ctx: StateContext<CalcToolAppState>, action: Subtract) {
+  subtract(ctx: StateContext<CalcToolStateModel>, action: Subtract) {
 
     const state = ctx.getState();
     
