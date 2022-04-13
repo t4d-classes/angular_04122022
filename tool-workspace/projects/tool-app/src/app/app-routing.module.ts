@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: AppHomeComponent },
   { path: 'color-tool', loadChildren: () =>
     import('color-tool-lib').then(mod => mod.ColorToolLibModule) },
+  { path: 'calc-tool', loadChildren: () =>
+    import('calc-tool-lib').then(mod => mod.CalcToolLibModule) },
 ];
 
 @NgModule({

@@ -165,6 +165,37 @@
           }
         }
       }
+    },
+    "calc-tool-lib": {
+      "projectType": "library",
+      "root": "projects/calc-tool-lib",
+      "sourceRoot": "projects/calc-tool-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/calc-tool-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/calc-tool-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/calc-tool-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/calc-tool-lib/src/test.ts",
+            "tsConfig": "projects/calc-tool-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/calc-tool-lib/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "tool-app"

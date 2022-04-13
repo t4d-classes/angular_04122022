@@ -17,6 +17,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
+      "calc-tool-lib": [
+        "dist/calc-tool-lib/calc-tool-lib",
+        "dist/calc-tool-lib"
+      ],
       "color-tool-lib": [
         "dist/color-tool-lib/color-tool-lib",
         "dist/color-tool-lib"
