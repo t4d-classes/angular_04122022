@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'lib-calc-home',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalcHomeComponent implements OnInit {
 
+  result = 0;
+
+  numInput = new FormControl('');
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  add() {
+
+  }
+
+  subtract() {
+
   }
 
 }

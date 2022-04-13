@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxsModule } from '@ngxs/store';
 
 import { CalcToolLibRoutingModule } from './calc-tool-lib-routing.module';
 
@@ -13,7 +15,9 @@ import { CalcHomeComponent } from './components/calc-home/calc-home.component';
     CalcHomeComponent
   ],
   imports: [
+    ReactiveFormsModule,
     CalcToolLibRoutingModule,
+    NgxsModule.forFeature([]),
   ],
   exports: [
     CalcToolLibComponent

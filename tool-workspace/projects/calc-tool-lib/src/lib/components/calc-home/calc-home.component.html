@@ -1,1 +1,15 @@
 <h2>Calc Home</h2>
+
+
+<div>Result: {{result}}</div>
+<form>
+  <label>
+    Num Input
+    <input type="number" [formControl]="numInput" />
+  </label>
+
+  <fieldset>
+    <button type="button" (click)="add()">+</button>
+    <button type="button" (click)="subtract()">-</button>
+  </fieldset>
+</form>
