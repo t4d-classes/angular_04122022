@@ -11,5 +11,13 @@
   <fieldset>
     <button type="button" (click)="add()">+</button>
     <button type="button" (click)="subtract()">-</button>
+    <button type="button" (click)="multiply()">*</button>
+    <button type="button" (click)="divide()">/</button>
   </fieldset>
 </form>
+
+<ul>
+  <li *ngFor="let entry of history$ | async">
+    {{entry.opName}} {{entry.opValue}}
+  </li>
+</ul>

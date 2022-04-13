@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Add, CalcToolStateModel, CalcToolState, Subtract } from '../../calc-tool-lib.state';
+import { Add, CalcToolStateModel, CalcToolState, Subtract, HistoryEntry, Multiply, Divide } from '../../calc-tool-lib.state';
 
 @Component({
   selector: 'lib-calc-home',
@@ -12,28 +12,33 @@ import { Add, CalcToolStateModel, CalcToolState, Subtract } from '../../calc-too
 })
 export class CalcHomeComponent implements OnInit {
 
-  // @Select((state: { calcTool: CalcToolStateModel }) => state.calcTool.result)
   @Select(CalcToolState.result)
   result$!: Observable<number>;
 
+  @Select(CalcToolState.history)
+  history$!: Observable<HistoryEntry[]>;
+
   numInput = new FormControl('');
 
-  constructor(private store: Store) {
-    // this.result$ = this.store.select(
-    //   (state: { calcTool: CalcToolStateModel }) => state.calcTool.result);
-  }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
 
   add() {
     this.store.dispatch(new Add(this.numInput.value));
-    // this.numInput.setValue(0);
   }
 
   subtract() {
     this.store.dispatch(new Subtract(this.numInput.value));
-    // this.numInput.setValue(0);
   }
+
+  multiply() {
+    this.store.dispatch(new Multiply(this.numInput.value));
+  }
+
+  divide() {
+    this.store.dispatch(new Divide(this.numInput.value));
+  }  
 
 }
