@@ -1,6 +1,13 @@
+import { Injectable } from '@angular/core';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs';
 
 import { Color, NewColor } from './models/colors';
+import { ColorsDataService } from './services/colors-data.service';
+
+export class RefreshColors {
+  static readonly type = '[ColorTool] Refresh Colors';
+}
 
 export class AppendColor {
   static readonly type = '[ColorTool] Append Color';
@@ -14,13 +21,10 @@ export type ColorToolStateModel = {
 @State<ColorToolStateModel>({
   name: 'colorTool',
   defaults: {
-    colors: [
-      { id: 1, name: 'red', hexcode: 'ff0000' },
-      { id: 2, name: 'green', hexcode: '00ff00' },
-      { id: 3, name: 'blue', hexcode: '0000ff' },
-    ],
+    colors: [],
   },
 })
+@Injectable()
 export class ColorToolState {
 
   @Selector()
@@ -30,17 +34,28 @@ export class ColorToolState {
     });
   }
 
+  constructor(private colorsData: ColorsDataService) { }
+
+  @Action(RefreshColors)
+  refreshColors(ctx: StateContext<ColorToolStateModel>) {
+
+    return this.colorsData.all().pipe(
+      tap(colors => {
+        ctx.patchState({ colors });
+      }),
+    );
+
+  }
+
   @Action(AppendColor)
   appendColor(ctx: StateContext<ColorToolStateModel>, action: AppendColor) {
-    
-    const state = ctx.getState();
-    
-    ctx.patchState({
-      colors: [...state.colors, {
-        id: Math.max(...state.colors.map(c => c.id), 0) + 1,
-        ...action.color,
-      }],
-    });
+
+    return this.colorsData.append(action.color).pipe(
+      tap(() => {
+        ctx.dispatch(new RefreshColors());
+      }),
+    );
+
   }
 
 }

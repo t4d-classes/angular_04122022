@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AppendColor, ColorToolState } from '../../color-tool-lib.state';
+import { AppendColor, ColorToolState, RefreshColors } from '../../color-tool-lib.state';
 import { Color, NewColor } from '../../models/colors';
 
 @Component({
@@ -18,6 +18,7 @@ export class ColorHomeComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new RefreshColors());
   }
 
   addColor(color: NewColor) {
