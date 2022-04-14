@@ -13,7 +13,7 @@ import { Color, NewColor } from '../../models/colors';
 export class ColorHomeComponent implements OnInit {
 
   @Select(ColorToolState.colors)
-  colors$!: Observable<Color[]>;
+  colors$!: Observable<string[]>;
 
   constructor(private store: Store) { }
 

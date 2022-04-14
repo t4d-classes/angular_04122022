@@ -25,7 +25,9 @@ export class ColorToolState {
 
   @Selector()
   static colors(state: ColorToolStateModel) {
-    return state.colors;
+    return state.colors.map(color => {
+      return `${color.name} ${color.hexcode}`;
+    });
   }
 
   @Action(AppendColor)
