@@ -1,4 +1,5 @@
 <lib-tool-header headerText="Color Tool"></lib-tool-header>
-<lib-item-list [items]="colors$ | async"></lib-item-list>
+<lib-item-list [items]="colors$ | async"
+  actionText="X" (action)="deleteColor($event)"></lib-item-list>
 <lib-color-form buttonText="Add Color"
   (submitColorForm)="addColor($event)"></lib-color-form>

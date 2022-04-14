@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { Item } from '../../models/items';
 
 @Component({
   selector: 'lib-item-list',
@@ -8,11 +10,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemListComponent implements OnInit {
 
   @Input()
-  items: string[] | null = [];
+  items: Item[] | null = [];
+
+  @Input()
+  actionText: string = 'Go';
+
+  @Output()
+  action = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  doAction(itemId: number) {
+    this.action.emit(itemId);
   }
 
 }

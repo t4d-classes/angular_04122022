@@ -17,4 +17,11 @@ export class ColorsDataService {
   append(color: NewColor) {
     return this.httpClient.post<Color>('http://localhost:3060/colors', color);
   }
+
+  remove(colorId: number) {
+    const encodedColorId = encodeURIComponent(colorId);
+    const url = `http://localhost:3060/colors/${encodedColorId}`;
+    return this.httpClient.delete<void>(url);
+  }
+
 }

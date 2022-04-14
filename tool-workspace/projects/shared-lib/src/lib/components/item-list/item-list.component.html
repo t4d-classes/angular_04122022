@@ -1,5 +1,7 @@
 <ul>
   <li *ngFor="let item of items">
-    {{item}}
+    {{item.value}}
+    <button type="button" (click)="doAction(item.id)">
+      {{actionText}}</button>
   </li> 
 </ul>

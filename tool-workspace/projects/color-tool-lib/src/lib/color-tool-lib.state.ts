@@ -4,6 +4,7 @@ import { tap } from 'rxjs';
 
 import { Color, NewColor } from './models/colors';
 import { ColorsDataService } from './services/colors-data.service';
+import { Item } from 'shared-lib';
 
 export class RefreshColors {
   static readonly type = '[ColorTool] Refresh Colors';
@@ -12,6 +13,11 @@ export class RefreshColors {
 export class AppendColor {
   static readonly type = '[ColorTool] Append Color';
   constructor(public color: NewColor) { }
+}
+
+export class RemoveColor {
+  static readonly type = '[ColorTool] Remove Color';
+  constructor(public colorId: number) { }
 }
 
 export type ColorToolStateModel = {
@@ -30,7 +36,7 @@ export class ColorToolState {
   @Selector()
   static colors(state: ColorToolStateModel) {
     return state.colors.map(color => {
-      return `${color.name} ${color.hexcode}`;
+      return { id: color.id, value: `${color.name} ${color.hexcode}` } as Item;
     });
   }
 
@@ -57,5 +63,16 @@ export class ColorToolState {
     );
 
   }
+
+  @Action(RemoveColor)
+  removeColor(ctx: StateContext<ColorToolStateModel>, action: RemoveColor) {
+
+    return this.colorsData.remove(action.colorId).pipe(
+      tap(() => {
+        ctx.dispatch(new RefreshColors());
+      }),
+    );
+
+  }  
 
 }
