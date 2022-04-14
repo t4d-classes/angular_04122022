@@ -37,14 +37,12 @@ export type HistoryEntry = {
 }
 
 export type CalcToolStateModel = {
-  result: number;
   history: HistoryEntry[];
 };
 
 @State<CalcToolStateModel>({
   name: 'calcTool',
   defaults: {
-    result: 0,
     history: [],
   },
 })
@@ -52,7 +50,20 @@ export class CalcToolState {
 
   @Selector()
   static result(state: CalcToolStateModel) {
-    return state.result;
+    return state.history.reduce((result, entry) => {
+      switch(entry.opName) {
+        case 'Add':
+          return result + entry.opValue;
+        case 'Subtract':
+          return result - entry.opValue;
+        case 'Multiply':
+          return result * entry.opValue;
+        case 'Divide':
+          return result / entry.opValue;
+        default:
+          return result;
+      }
+    }, 0);
   }
 
   @Selector()
@@ -66,7 +77,6 @@ export class CalcToolState {
     const state = ctx.getState();
     
     ctx.patchState({
-      result: state.result + action.value,
       history: [...state.history, {
         id: Math.max(...state.history.map(entry => entry.id), 0) + 1,
         opName: 'Add',
@@ -81,7 +91,6 @@ export class CalcToolState {
     const state = ctx.getState();
     
     ctx.patchState({
-      result: state.result - action.value,
       history: [...state.history, {
         id: Math.max(...state.history.map(entry => entry.id), 0) + 1,
         opName: 'Subtract',
@@ -96,7 +105,6 @@ export class CalcToolState {
     const state = ctx.getState();
     
     ctx.patchState({
-      result: state.result * action.value,
       history: [...state.history, {
         id: Math.max(...state.history.map(entry => entry.id), 0) + 1,
         opName: 'Multiply',
@@ -111,7 +119,6 @@ export class CalcToolState {
     const state = ctx.getState();
     
     ctx.patchState({
-      result: state.result / action.value,
       history: [...state.history, {
         id: Math.max(...state.history.map(entry => entry.id), 0) + 1,
         opName: 'Divide',
@@ -126,7 +133,6 @@ export class CalcToolState {
     const state = ctx.getState();
     
     ctx.patchState({
-      result: 0,
       history: [],
     });
   }
