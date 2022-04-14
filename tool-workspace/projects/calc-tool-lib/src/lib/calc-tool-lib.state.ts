@@ -135,9 +135,16 @@ export class CalcToolState {
   deleteHistoryEntry(ctx: StateContext<CalcToolStateModel>, action: DeleteHistoryEntry) {
 
     const state = ctx.getState();
+
+    const newHistory = [...state.history];
+
+    const historyEntryIndex = newHistory.findIndex(
+      historyEntry => historyEntry.id === action.entryId);
+
+    newHistory.splice(historyEntryIndex, 1);
     
     ctx.patchState({
-      history: state.history.filter(entry => entry.id !== action.entryId),
+      history: newHistory,
     });
   }
 
