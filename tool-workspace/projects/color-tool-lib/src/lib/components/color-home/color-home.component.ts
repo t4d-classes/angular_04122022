@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AppendColor, ColorToolState, RefreshColors, RemoveColor } from '../../color-tool-lib.state';
-import { Color, NewColor } from '../../models/colors';
+import { NewColor } from '../../models/colors';
 import { Item } from 'shared-lib';
 
 @Component({
