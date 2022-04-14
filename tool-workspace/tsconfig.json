@@ -21,6 +21,10 @@
         "dist/calc-tool-lib/calc-tool-lib",
         "dist/calc-tool-lib"
       ],
+      "car-tool-lib": [
+        "dist/car-tool-lib/car-tool-lib",
+        "dist/car-tool-lib"
+      ],
       "color-tool-lib": [
         "dist/color-tool-lib/color-tool-lib",
         "dist/color-tool-lib"

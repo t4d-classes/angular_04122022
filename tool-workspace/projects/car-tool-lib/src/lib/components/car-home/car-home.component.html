@@ -1,0 +1,6 @@
+<lib-tool-header headerText="Car Tool"></lib-tool-header>
+<lib-car-table [cars]="cars" [editCarId]="editCarId"
+  (editCar)="doEditCar($event)" (deleteCar)="doRemoveCar($event)"
+  (saveCar)="doReplaceCar($event)" (cancelCar)="doCancelCar($event)"></lib-car-table>
+<lib-car-form buttonText="Add Car"
+  (submitCar)="doAppendCar($event)"></lib-car-form>
