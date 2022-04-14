@@ -20,6 +20,16 @@ export class Divide {
   constructor(public value: number) { }
 }
 
+export class Clear {
+  static readonly type = '[CalcTool] Clear';
+}
+
+export class DeleteHistoryEntry {
+  static readonly type = '[CalcTool] Delete History Entry';
+  constructor(public entryId: number) { }
+}
+
+
 export type HistoryEntry = {
   id: number;
   opName: string;
@@ -110,5 +120,25 @@ export class CalcToolState {
     });
   }
 
+  @Action(Clear)
+  clear(ctx: StateContext<CalcToolStateModel>) {
+
+    const state = ctx.getState();
+    
+    ctx.patchState({
+      result: 0,
+      history: [],
+    });
+  }
+
+  @Action(DeleteHistoryEntry)
+  deleteHistoryEntry(ctx: StateContext<CalcToolStateModel>, action: DeleteHistoryEntry) {
+
+    const state = ctx.getState();
+    
+    ctx.patchState({
+      history: state.history.filter(entry => entry.id !== action.entryId),
+    });
+  }
 
 }

@@ -3,7 +3,10 @@ import { FormControl } from '@angular/forms';
 
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Add, CalcToolStateModel, CalcToolState, Subtract, HistoryEntry, Multiply, Divide } from '../../calc-tool-lib.state';
+import {
+  CalcToolState, HistoryEntry, Add, Subtract,
+  Multiply, Divide, Clear, DeleteHistoryEntry,
+} from '../../calc-tool-lib.state';
 
 @Component({
   selector: 'lib-calc-home',
@@ -39,6 +42,15 @@ export class CalcHomeComponent implements OnInit {
 
   divide() {
     this.store.dispatch(new Divide(this.numInput.value));
-  }  
+  }
+
+  clear() {
+    this.store.dispatch(new Clear());
+    this.numInput.setValue(0);
+  }
+
+  deleteHistoryEntry(entryId: number) {
+    this.store.dispatch(new DeleteHistoryEntry(entryId));
+  }
 
 }
