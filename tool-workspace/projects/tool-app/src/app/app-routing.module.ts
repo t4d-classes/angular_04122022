@@ -9,6 +9,8 @@ const routes: Routes = [
     import('color-tool-lib').then(mod => mod.ColorToolLibModule) },
   { path: 'calc-tool', loadChildren: () =>
     import('calc-tool-lib').then(mod => mod.CalcToolLibModule) },
+  { path: 'car-tool', loadChildren: () =>
+    import('car-tool-lib').then(mod => mod.CarToolLibModule) },
 ];
 
 @NgModule({

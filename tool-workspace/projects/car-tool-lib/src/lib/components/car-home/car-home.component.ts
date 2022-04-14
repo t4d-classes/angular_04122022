@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AppendCar, EditCar, RefreshCars, CarToolState, RemoveCar, CancelCar, ReplaceCar } from '../../car-tool-lib.state';
 
-import { Car } from '../../models/car';
+import { Car } from '../../models/cars';
 
 @Component({
   selector: 'lib-car-home',
@@ -9,28 +12,36 @@ import { Car } from '../../models/car';
 })
 export class CarHomeComponent implements OnInit {
 
-  cars: Car[] = [];
+  @Select(CarToolState.cars)
+  cars$!: Observable<Car[]>;
 
-  editCarId: number = -1;
+  @Select(CarToolState.editCarId)
+  editCarId$!: Observable<number>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
+    this.store.dispatch(new RefreshCars());
   }
 
   doEditCar(carId: number) {
+    this.store.dispatch(new EditCar(carId));
   }
 
   doCancelCar() {
+    this.store.dispatch(new CancelCar());
   }
 
   doAppendCar(car: Car) {
+    this.store.dispatch(new AppendCar(car));
   }
 
   doReplaceCar(car: Car) {
+    this.store.dispatch(new ReplaceCar(car));
   }
 
   doRemoveCar(carId: number) {
+    this.store.dispatch(new RemoveCar(carId));
   }
 
 }

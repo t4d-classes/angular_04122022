@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { Car } from '../../models/car';
+import { Car } from '../../models/cars';
 
 @Component({
   selector: '.lib-car-edit-row',

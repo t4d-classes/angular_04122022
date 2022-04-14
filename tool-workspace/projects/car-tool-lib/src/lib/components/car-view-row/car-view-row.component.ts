@@ -1,7 +1,7 @@
 import {
   Component, OnInit, Input, Output, EventEmitter,
 } from '@angular/core';
-import { Car } from '../../models/car';
+import { Car } from '../../models/cars';
 
 @Component({
   selector: '.lib-car-view-row',

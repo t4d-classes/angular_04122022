@@ -15,7 +15,7 @@
       <tr class="lib-car-view-row" [car]="car" *ngIf="editCarId !== car.id"
         (deleteCar)="doDeleteCar($event)" (editCar)="doEditCar($event)"></tr>
       <tr class="lib-car-edit-row" [car]="car" *ngIf="editCarId === car.id"
-        (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar($event)"></tr>
+        (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar()"></tr>
     </ng-container>
   </tbody>
 </table>

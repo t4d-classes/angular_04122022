@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Car } from '../../models/car';
+import { Car } from '../../models/cars';
 
 @Component({
   selector: 'lib-car-table',
@@ -10,10 +10,10 @@ import { Car } from '../../models/car';
 export class CarTableComponent implements OnInit {
 
   @Input()
-  cars: Car[] = [];
+  cars: Car[] | null = [];
 
   @Input()
-  editCarId = -1;
+  editCarId: number | null = -1;
 
   @Output()
   editCar = new EventEmitter<number>();
