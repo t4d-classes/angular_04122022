@@ -1,8 +1,4 @@
-<h2>Color Home</h2>
-
-
-<!-- <ul>
-  <li *ngFor="let color of colors">
-    {{color.name}}
-  </li>
-</ul> -->
+<lib-tool-header headerText="Color Tool"></lib-tool-header>
+<lib-color-list [colors]="colors$ | async"></lib-color-list>
+<lib-color-form buttonText="Add Color"
+  (submitColorForm)="addColor($event)"></lib-color-form>

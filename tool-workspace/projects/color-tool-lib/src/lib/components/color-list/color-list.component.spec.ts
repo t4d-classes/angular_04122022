@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ColorToolLibComponent } from './color-tool-lib.component';
+import { ColorListComponent } from './color-list.component';
 
-describe('ColorToolLibComponent', () => {
-  let component: ColorToolLibComponent;
-  let fixture: ComponentFixture<ColorToolLibComponent>;
+describe('ColorListComponent', () => {
+  let component: ColorListComponent;
+  let fixture: ComponentFixture<ColorListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColorToolLibComponent ]
+      declarations: [ ColorListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ColorToolLibComponent);
+    fixture = TestBed.createComponent(ColorListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

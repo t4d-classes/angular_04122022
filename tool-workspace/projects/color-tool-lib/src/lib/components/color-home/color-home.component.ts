@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AppendColor, ColorToolState } from '../../color-tool-lib.state';
+import { Color, NewColor } from '../../models/colors';
+
 @Component({
   selector: 'lib-color-home',
   templateUrl: './color-home.component.html',
@@ -7,27 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorHomeComponent implements OnInit {
 
-  // colors = [
-  //   { id: 1, name: 'red', hexcode: 'ff0000' },
-  //   { id: 2, name: 'green', hexcode: '00ff00' },
-  //   { id: 3, name: 'blue', hexcode: '0000ff' }
-  // ];
+  @Select(ColorToolState.colors)
+  colors$!: Observable<Color[]>;
 
-  // sortField = 'name';
-  // sortDir = 'asc';
-
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
 
-  // addColor() {
-
-  //   this.colors = [
-  //     ...this.colors,
-  //     { /* some new color */ }
-  //   ];
-
-  // }
+  addColor(color: NewColor) {
+    this.store.dispatch(new AppendColor(color));
+  }
 
 }

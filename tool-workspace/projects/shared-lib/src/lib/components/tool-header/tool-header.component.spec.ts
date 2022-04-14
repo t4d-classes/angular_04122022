@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharedLibComponent } from './shared-lib.component';
+import { ToolHeaderComponent } from './tool-header.component';
 
-describe('SharedLibComponent', () => {
-  let component: SharedLibComponent;
-  let fixture: ComponentFixture<SharedLibComponent>;
+describe('ToolHeaderComponent', () => {
+  let component: ToolHeaderComponent;
+  let fixture: ComponentFixture<ToolHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedLibComponent ]
+      declarations: [ ToolHeaderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharedLibComponent);
+    fixture = TestBed.createComponent(ToolHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

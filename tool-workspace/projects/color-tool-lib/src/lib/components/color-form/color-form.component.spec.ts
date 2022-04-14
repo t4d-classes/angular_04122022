@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalcToolLibComponent } from './calc-tool-lib.component';
+import { ColorFormComponent } from './color-form.component';
 
-describe('CalcToolLibComponent', () => {
-  let component: CalcToolLibComponent;
-  let fixture: ComponentFixture<CalcToolLibComponent>;
+describe('ColorFormComponent', () => {
+  let component: ColorFormComponent;
+  let fixture: ComponentFixture<ColorFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalcToolLibComponent ]
+      declarations: [ ColorFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CalcToolLibComponent);
+    fixture = TestBed.createComponent(ColorFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
